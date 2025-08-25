@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && next export -o out",
+    "build": "next build && next export --output-dir out",
     "start": "next start",
     "lint": "next lint"
   },

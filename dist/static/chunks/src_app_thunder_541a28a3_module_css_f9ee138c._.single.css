@@ -1,0 +1,43 @@
+/* [project]/src/app/thunder_541a28a3.module.css [app-client] (css) */
+@font-face {
+  font-family: thunder;
+  src: url("../media/Thunder_BlackLC-s.p.1324da48.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: thunder;
+  src: url("../media/Thunder_BlackLC-s.p.157f8911.woff") format("woff");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: thunder;
+  src: url("../media/Thunder_BlackLC-s.p.dbc7e4d7.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: thunder Fallback;
+  src: local(Arial);
+  ascent-override: 104.26%;
+  descent-override: 28.96%;
+  line-gap-override: 0.0%;
+  size-adjust: 69.06%;
+}
+
+.thunder_541a28a3-module__dYn-Oa__className {
+  font-family: thunder, thunder Fallback;
+}
+
+.thunder_541a28a3-module__dYn-Oa__variable {
+  --font-thunder: "thunder", "thunder Fallback";
+}
+
+/*# sourceMappingURL=src_app_thunder_541a28a3_module_css_f9ee138c._.single.css.map*/

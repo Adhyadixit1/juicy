@@ -1,11 +1,19 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   // Enable static exports
   output: 'export',
   
+  // Set asset prefix for production
+  assetPrefix: isProd ? './' : '',
+  basePath: isProd ? '' : '',
+  
   // Disable image optimization for static exports
   images: {
     unoptimized: true,
+    loader: 'custom',
+    loaderFile: './src/utils/image-loader.js',
   },
   
   // Enable React Strict Mode
@@ -30,8 +38,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Set the output directory for static export
-  distDir: 'dist',
+  // Webpack configuration
+  webpack: (config) => {
+    // Important: return the modified config
+    return config;
+  },
 };
 
 module.exports = nextConfig;

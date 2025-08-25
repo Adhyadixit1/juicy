@@ -1,0 +1,13 @@
+{
+  "app": {
+    "[project]/src/app/page": [
+      "static/media/QlddNThLqRwH_OJ1UHjlKENVzkWGVkL3GZQmAwLyya15IDhunA-s.p.aa26f853.woff2",
+      "static/media/Thunder_BlackLC-s.p.157f8911.woff",
+      "static/media/Thunder_BlackLC-s.p.1324da48.woff2",
+      "static/media/Thunder_BlackLC-s.p.dbc7e4d7.ttf"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

@@ -1,22 +1,30 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  // Enable static exports
+  output: 'export',
+  
+  // Disable image optimization for static exports
   images: {
-    unoptimized: true, // Disable Image Optimization API as it's not needed on Vercel
+    unoptimized: true,
   },
+  
   // Enable React Strict Mode
   reactStrictMode: true,
+  
   // Configure page extensions
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-  // Enable static exports for the 'out' directory
-  output: 'export',
-  // Add base path if your app is not served from the root
-  // basePath: '/juicy',
+  
   // Add trailing slash for better compatibility
   trailingSlash: true,
-  // Enable production browser source maps
+  
+  // Disable production source maps
   productionBrowserSourceMaps: false,
+  
+  // Add webpack configuration
+  webpack: (config, { isServer }) => {
+    // Important: return the modified config
+    return config;
+  },
 };
 
 module.exports = nextConfig;

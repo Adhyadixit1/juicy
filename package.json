@@ -2,9 +2,13 @@
   "name": "juicy",
   "version": "0.1.0",
   "private": true,
+  "overrides": {
+    "caniuse-lite": "^1.0.30001642",
+    "browserslist": "^4.23.2"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && next export -o out",
     "start": "next start",
     "lint": "next lint"
   },

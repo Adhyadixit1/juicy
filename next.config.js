@@ -5,15 +5,12 @@ const nextConfig = {
   // Enable static exports
   output: 'export',
   
-  // Set asset prefix for production
-  assetPrefix: isProd ? './' : '',
-  basePath: isProd ? '' : '',
+  // Remove assetPrefix and basePath as they can interfere with font loading
+  // and static exports
   
   // Disable image optimization for static exports
   images: {
     unoptimized: true,
-    loader: 'custom',
-    loaderFile: './src/utils/image-loader.js',
   },
   
   // Enable React Strict Mode
@@ -38,9 +35,17 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Webpack configuration
+  // Webpack configuration for font handling
   webpack: (config) => {
-    // Important: return the modified config
+    // Fix for font loading in static export
+    config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/media/[name].[hash][ext]',
+      },
+    });
+    
     return config;
   },
 };

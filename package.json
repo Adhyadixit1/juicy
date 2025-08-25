@@ -29,13 +29,11 @@
     "three": "^0.176.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@types/three": "^0",
-    "critters": "^0.0.25",
-    "css-loader": "^7.1.2",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "copy-webpack-plugin": "^12.0.2",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "loader-utils": "^3.3.1",
@@ -44,7 +42,8 @@
     "tailwindcss": "^4",
     "tailwindcss-patch": "^7.1.0",
     "typescript": "^5",
-    "unplugin-tailwindcss-mangle": "^4.1.0"
+    "unplugin-tailwindcss-mangle": "^4.1.0",
+    "webpack": "^5.90.0"
   },
   "packageManager": "yarn@4.8.1+sha512.bc946f2a022d7a1a38adfc15b36a66a3807a67629789496c3714dd1703d2e6c6b1c69ff9ec3b43141ac7a1dd853b7685638eb0074300386a59c18df351ef8ff6"
 }

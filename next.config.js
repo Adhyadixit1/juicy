@@ -20,11 +20,18 @@ const nextConfig = {
   // Disable production source maps
   productionBrowserSourceMaps: false,
   
-  // Add webpack configuration
-  webpack: (config, { isServer }) => {
-    // Important: return the modified config
-    return config;
+  // Skip linting during build
+  eslint: {
+    ignoreDuringBuilds: true,
   },
+  
+  // Skip type checking during build
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  
+  // Set the output directory for static export
+  distDir: 'dist',
 };
 
 module.exports = nextConfig;

@@ -10,6 +10,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "export": "next export -o out",
+    "postbuild": "npm run copy-assets",
+    "copy-assets": "xcopy /E /I /Y public out\\public",
     "start": "next start",
     "lint": "next lint"
   },

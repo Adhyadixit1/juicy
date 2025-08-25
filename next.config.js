@@ -5,8 +5,8 @@ const nextConfig = {
   // Enable static exports
   output: 'export',
   
-  // Remove assetPrefix and basePath as they can interfere with font loading
-  // and static exports
+  // Base path for static assets
+  assetPrefix: isProd ? '.' : '',
   
   // Disable image optimization for static exports
   images: {
@@ -35,11 +35,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Webpack configuration for font handling
+  // Webpack configuration for asset handling
   webpack: (config) => {
     // Fix for font loading in static export
     config.module.rules.push({
-      test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      test: /\.(woff|woff2|eot|ttf|otf|glb|gltf|bin|png|jpg|jpeg|gif|svg)$/i,
       type: 'asset/resource',
       generator: {
         filename: 'static/media/[name].[hash][ext]',
@@ -47,6 +47,24 @@ const nextConfig = {
     });
     
     return config;
+  },
+  
+  // Copy static assets during export
+  async exportPathMap(defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+    const fs = require('fs');
+    const path = require('path');
+    
+    // Copy public directory
+    const publicDir = path.join(dir, 'public');
+    const outPublicDir = path.join(outDir, 'public');
+    
+    if (fs.existsSync(publicDir)) {
+      await fs.promises.cp(publicDir, outPublicDir, { recursive: true });
+    }
+    
+    return {
+      ...defaultPathMap,
+    };
   },
 };
 

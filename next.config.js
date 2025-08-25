@@ -51,20 +51,40 @@ const nextConfig = {
   
   // Copy static assets during export
   async exportPathMap(defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
-    const fs = require('fs');
-    const path = require('path');
-    
-    // Copy public directory
-    const publicDir = path.join(dir, 'public');
-    const outPublicDir = path.join(outDir, 'public');
-    
-    if (fs.existsSync(publicDir)) {
-      await fs.promises.cp(publicDir, outPublicDir, { recursive: true });
+    try {
+      const fs = require('fs');
+      const path = require('path');
+      
+      // Ensure outDir exists
+      if (!outDir) {
+        outDir = path.join(process.cwd(), 'out');
+      }
+      
+      // Create out directory if it doesn't exist
+      if (!fs.existsSync(outDir)) {
+        fs.mkdirSync(outDir, { recursive: true });
+      }
+      
+      // Copy public directory
+      const publicDir = path.join(process.cwd(), 'public');
+      const outPublicDir = path.join(outDir, 'public');
+      
+      if (fs.existsSync(publicDir)) {
+        // Create destination directory if it doesn't exist
+        if (!fs.existsSync(path.dirname(outPublicDir))) {
+          fs.mkdirSync(path.dirname(outPublicDir), { recursive: true });
+        }
+        
+        // Use fs-extra for better file copying
+        const fse = require('fs-extra');
+        await fse.copy(publicDir, outPublicDir, { overwrite: true });
+      }
+      
+      return defaultPathMap || {};
+    } catch (error) {
+      console.error('Error in exportPathMap:', error);
+      return defaultPathMap || {};
     }
-    
-    return {
-      ...defaultPathMap,
-    };
   },
 };
 
